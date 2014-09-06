@@ -2,8 +2,8 @@ name:
 description: "file:///README.md"
 url: "https://www.netways.org/projects/plugins"
 tags: ~
-vendor: Netways
-target: Temperature
+vendor: STARFACE,NETWAYS
+target: VoIP
 type: Plugin
 license: gplv2
 releases: 

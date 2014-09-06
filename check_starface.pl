@@ -85,6 +85,8 @@ Print version an exit.
 
 Print help message and exit.
 
+=back
+
 =cut
 
 
@@ -112,7 +114,7 @@ sub printResultAndExit {
 
 	#print 'check_starface: ';
 
-	print "@_" if (defined @_);
+	print "@_" if (@_);
 
 	print "\n";
 
