@@ -1,0 +1,22 @@
+[root@starface ~]# asterisk -rx "Srx show layers"
+SYNC: port 0x0002
+l1=0x91b5f48: port=0x0000, type=BRI, mode=NT, ptp=0, ma=0, act=1, st='ST_L1_IPAC_G3_ACTIVATED'
+  l2h=0x9296878
+    l2=0x92123a0: tei=127, uiq=0, iq=0, siq=0, st='ST_L2_4_TEI_ASSIGNED':
+      l3h=0x91ef4c0: cr_out={ }, cr_in={ }, oq=0, iq=0
+l1=0x927b378: port=0x0001, type=BRI, mode=NT, ptp=0, ma=0, act=0, st='ST_L1_IPAC_G1_DEACTIVATED_DI'
+  l2h=0x92120b0
+    l2=0x92aaef0: tei=127, uiq=0, iq=0, siq=0, st='ST_L2_4_TEI_ASSIGNED':
+      l3h=0x92ab2f0: cr_out={ }, cr_in={ }, oq=0, iq=0
+l1=0x91ba0d8: port=0x0002, type=BRI, mode=TE, ptp=1, ma=1, act=1, st='ST_L1_IPAC_F7_ACTIVATED'
+  l2h=0x929bf18
+    l2=0x9296388: tei=  0, uiq=0, iq=0, siq=1, st='ST_L2_70_MULTIPLE_FRAME_ESTABLISHED_NORMAL':
+      l3h=0x929d8a8: cr_out={ 0x0013 }, cr_in={ }, oq=0, iq=0
+        l3=0x927c378: cr=(0x0013, 0x0000), occ=1, ces_m=(nil), hr_m=(nil), hr_s=(nil), st='L3 ACTIVE(U10)'
+        l3=0x91ea450: cr=(0xffff, 0xffff), occ=0, ces_m=(nil), hr_m=(nil), hr_s=(nil), st='L3 NULL STATE(U0)'
+l1=0x91aa2d0: port=0x0003, type=BRI, mode=TE, ptp=1, ma=1, act=1, st='ST_L1_IPAC_F7_ACTIVATED'
+  l2h=0x929a808
+    l2=0x92a9960: tei=  0, uiq=0, iq=0, siq=1, st='ST_L2_70_MULTIPLE_FRAME_ESTABLISHED_NORMAL':
+      l3h=0x92098f8: cr_out={ }, cr_in={ }, oq=0, iq=0
+        l3=0x920a310: cr=(0xffff, 0xffff), occ=0, ces_m=(nil), hr_m=(nil), hr_s=(nil), st='L3 NULL STATE(U0)'
+Verbosity is at least 10

@@ -1,0 +1,242 @@
+###########################################################################################
+#  Starface calls
+###########################################################################################
+
+# active ISDN calls
+define ngraph{
+	service_name		starface
+	page			calls
+	graph_perf_regex	sum active calls: (\d+)
+	graph_value		calls
+	graph_units		calls
+	graph_legend		sum active external calls
+	rrd_plottype		LINE2
+	rrd_color		0080C0
+	}
+
+# calls in last 5 minutes
+define ngraph{
+	service_name		starface
+	page			calls
+	graph_perf_regex	last 5min calls: (\d+)
+	graph_value		calls5m
+	graph_units		calls
+	graph_legend		sum all calls within last 5 minutes
+	rrd_plottype		LINE2
+	rrd_color		FF8000
+	}
+
+
+###########################################################################################
+# load
+###########################################################################################
+
+define ngraph{
+	service_name		starface
+	page			load
+	graph_perf_regex	load: \d+\.\d+ \d+\.\d+ (\d+\.\d+)
+	graph_value		15min
+	graph_units		load
+	graph_legend		15min avg load:
+	graph_legend_max	15
+	rrd_plottype		AREA
+	rrd_color		EACC00
+}
+
+define ngraph{
+	service_name		starface
+	page			load
+	type			GPRINT
+	print_source		15min
+	print_description	Latest: 
+	print_function		LAST
+	print_format		%2.2lf
+}
+
+define ngraph{
+	service_name		starface
+	page			load
+	type			GPRINT
+	print_source		15min
+	print_description	Maximum: 
+	print_function		MAX
+	print_format		%2.2lf
+}
+
+define ngraph{
+	service_name		starface
+	page			load
+	type			GPRINT
+	print_source		15min
+	print_description	Average: 
+	print_function		AVERAGE
+	print_format		%2.2lf
+	print_eol		left
+}
+
+define ngraph{
+	service_name		starface
+	page			load
+	graph_perf_regex	load: \d+\.\d+ (\d+\.\d+)
+	graph_value		5min
+	graph_units		load
+	graph_legend		5min avg load:
+	graph_legend_max	15
+	rrd_plottype		STACK
+	rrd_color		EA8F00
+}
+
+define ngraph{
+	service_name		starface
+	page			load
+	type			GPRINT
+	print_source		5min
+	print_description	Latest: 
+	print_function		LAST
+	print_format		%2.2lf
+}
+
+define ngraph{
+	service_name		starface
+	page			load
+	type			GPRINT
+	print_source		5min
+	print_description	Maximum: 
+	print_function		MAX
+	print_format		%2.2lf
+}
+
+define ngraph{
+	service_name		starface
+	page			load
+	type			GPRINT
+	print_source		5min
+	print_description	Average: 
+	print_function		AVERAGE
+	print_format		%2.2lf
+	print_eol		left
+}
+
+define ngraph{
+	service_name		starface
+	page			load
+	graph_perf_regex	load: (\d+\.\d+)
+	graph_value		1min
+	graph_units		load
+	graph_legend		1min avg load:
+	graph_legend_max	15
+	rrd_plottype		STACK
+	rrd_color		FF0000
+}
+
+define ngraph{
+	service_name		starface
+	page			load
+	type			GPRINT
+	print_source		1min
+	print_description	Latest: 
+	print_function		LAST
+	print_format		%2.2lf
+}
+
+define ngraph{
+	service_name		starface
+	page			load
+	type			GPRINT
+	print_source		1min
+	print_description	Maximum: 
+	print_function		MAX
+	print_format		%2.2lf
+}
+
+define ngraph{
+	service_name		starface
+	page			load
+	type			GPRINT
+	print_source		1min
+	print_description	Average: 
+	print_function		AVERAGE
+	print_format		%2.2lf
+	print_eol		left
+}
+
+define ngraph{
+	service_name		starface
+	page			load
+	type			CDEF
+	graph_value		cdef_load
+	graph_units             
+	graph_legend            
+	graph_calc		15min,5min,+,1min,+
+	rrd_plottype		LINE1
+	rrd_color		000000
+	hide			no
+}
+
+define ngraph{
+	service_name		starface
+	page			load
+	type			COMMENT
+	print_description
+	print_eol		justify
+	print_repeat		0
+}
+
+define ngraph{
+	service_name		starface
+	page			load
+	type			VDEF
+	graph_value		vdef_load_average
+	graph_units
+	graph_legend		15min avg values
+	graph_calc		15min,AVERAGE
+	rrd_plottype		LINE1
+	rrd_color		0000ff
+	hide			no
+}
+
+
+###########################################################################################
+# Disk Usage
+###########################################################################################
+
+define ngraph{
+        service_name		starface
+	page			disk
+	graph_perf_regex	PercentUsed: (\d+)%
+	graph_value		DiskUsage
+	graph_units		percent
+	graph_legend		free space
+	rrd_plottype		AREA
+	rrd_color		00a000
+	hide			yes
+	}
+
+define ngraph{
+        service_name		starface
+	page			disk
+        type			CDEF
+        graph_value		used
+        graph_units		percent	
+        graph_legend		used disk space
+        graph_calc		DiskUsage
+        rrd_plottype		AREA
+        rrd_color		ff0000
+        hide			no
+        }
+
+define ngraph{
+        service_name		starface
+	page			disk
+        type			CDEF
+        graph_value		free
+        graph_units		percent	
+        graph_legend		free disk space
+        graph_calc		100,DiskUsage,-
+        rrd_plottype		STACK
+        rrd_color		00a000
+        hide			no
+        }
+
+
+# [EOF]
