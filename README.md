@@ -1,14 +1,12 @@
 check_starface
 ==============
 
-Check Plugin for STARFACE Comfortphoning Equipment.
-Checks a Starface Appliance/PBX.
+Check Plugin for STARFACE Comfortphoning Equipment. Checks a Starface Appliance/PBX.
 
-http://shop.netways.de/voip/starface.html
-
-### Requirements
-
-* Perl libraries: `IPC::Open3`, `IO::Socket`
+## Required Perl Libraries 
+                           
+* IPC::Open3
+* IO::Socket
     
 ### Usage
 
@@ -37,6 +35,3 @@ Options:
 
     -h|--help
         Print help message and exit.
-
-
-
